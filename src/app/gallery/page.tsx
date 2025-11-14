@@ -112,21 +112,21 @@ export default function Gallery() {
         </div>
         <div>
           <div className="text-4xl flex justify-center items-center font-bold text-black"><p>Take a look at some of the thank you notes from our parents & kids:</p></div>
-          <div className="flex flex-row flex-wrap justify-center items-center mt-8 gap-6 w-full">
+          <div className="flex flex-row flex-wrap justify-evenly h-full items-center mt-8 gap-6 w-full">
             {cards.map((card, index) => (
-              <div key={index} className="w-1/4">
-                <motion.div
-                  whileHover={{ scale: 2 }}
-                  className="hover:cursor-pointer"
-                >
-                  <img
-                    key={index}
-                    src={`/${card.src}`}
-                    alt={card.alt}
-                    className="rounded-lg shadow-lg w-full h-full object-cover"
-                  />
-                </motion.div>
-              </div>
+              <motion.li
+                whileHover={{ scale: 2, boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.3)", zIndex: 10, transition: { duration: 0.5 } }}
+                // create some space in between items .. maybe add transition buttons
+                className={`hover:cursor-pointer w-1/4 list-none absolute`}
+              >
+                <img
+                  key={index}
+                  src={`/${card.src}`}
+                  alt={card.alt}
+                  className="object-cover"
+                  sizes="30vw"
+                />
+              </motion.li>
             ))}
           </div>
         </div>
