@@ -1,10 +1,19 @@
 "use client";
 
 import ScrollCarousel from "../../components/carousel";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 import * as motion from "motion/react-client"
 
+interface Card {
+  src: string;
+  alt: string;
+}
+
 export default function Gallery() {
+  const [cardDeck, setCardDeck] = useState<Card[]>([]);
+
   const images = [
     "family image 1.jpeg",
     "family_image_7.png",
@@ -82,6 +91,21 @@ export default function Gallery() {
     "Birthday parties at our daycare are filled with fun, laughter, and excitement. We make each celebration special with themed decorations, games, and delicious treats."
   ];
 
+  const dragContainerRef = useRef<HTMLDivElement>(null);
+
+  const endOfLine = () => {
+    const firstInLine = cardDeck.shift();
+    if (firstInLine) {
+      setCardDeck([...cardDeck, firstInLine]);
+    } else {
+      return;
+    }
+  }
+
+  useEffect(() => {
+    setCardDeck(cards);
+  }, []);
+
   return (
     <div className="flex justify-center min-h-screen py-12 px-4 relative pt-20">
       <div
@@ -96,10 +120,7 @@ export default function Gallery() {
         }}
       />
       <div className="w-7/8 relative">
-        <h1 className="text-4xl font-bold mt-20 lg:mt-0 text-center mb-4 text-black">
-          Our Gallery
-        </h1>
-        <p className="text-xl text-center mb-12 text-black  max-w-2xl mx-auto">
+        <p className="text-2xl text-center my-12 text-black  max-w-2xl mx-auto">
           Each image captures a special moment in our daycare. From joyful playtimes to creative activities, our gallery showcases the vibrant and nurturing environment we provide for your children.
         </p>
         <div className="mb-12">
@@ -110,23 +131,34 @@ export default function Gallery() {
             size={`50vw`}
           />
         </div>
-        <div>
-          <div className="text-4xl flex justify-center items-center font-bold text-black"><p>Take a look at some of the thank you notes from our parents & kids:</p></div>
-          <div className="flex flex-row flex-wrap justify-evenly h-full items-center mt-8 gap-6 w-full">
-            {cards.map((card, index) => (
-              <motion.li
-                whileHover={{ scale: 2, boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.3)", zIndex: 10, transition: { duration: 0.5 } }}
-                // create some space in between items .. maybe add transition buttons
-                className={`hover:cursor-pointer w-1/4 list-none absolute`}
+        <div className="mb-4 flex flex-col items-center">
+          <div className="text-5xl flex justify-center items-center font-bold text-black"><p>Swipe through some thank you <span className="italic text-yellow-400 drop-shadow-4xl">Notes</span> from our parents & kids:</p></div>
+          <div ref={dragContainerRef} className="flex flex-col flex-wrap justify-center h-screen items-center w-3/4">
+            {cardDeck.map((card, index) => (
+              <motion.div
+                drag
+                whileDrag={{ scale: 1.5, boxShadow: '0px 10px 20px rgba(0, 0, 0, 0.3)', rotate: (Math.random() * 20) - 10 }}
+                key={index}
+                initial={{ boxShadow: '0px 0px 0px rgba(0, 0, 0, 0)', rotate: (Math.round(Math.random()) * 20) - 10 }}
+                onDragEnd={() => { endOfLine() }}
+                style={{ zIndex: cardDeck.length - index }}
+                className={`hover:cursor-grab active:cursor-grabbing flex flex-col items-center justify-center list-none absolute`}
+                dragConstraints={dragContainerRef}
+                dragElastic={0.2}
+                dragSnapToOrigin={true}
               >
-                <img
-                  key={index}
+                <Image
                   src={`/${card.src}`}
-                  alt={card.alt}
-                  className="object-cover"
-                  sizes="30vw"
+                  alt={`${card.alt}`}
+                  height={500}
+                  width={500}
+                  className="object-cover h-auto w-auto"
+                  style={{ touchAction: 'none' }}
+                  placeholder="blur"
+                  blurDataURL={`/${card.src}`}
+                  draggable={false}
                 />
-              </motion.li>
+              </motion.div>
             ))}
           </div>
         </div>

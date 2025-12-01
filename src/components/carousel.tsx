@@ -22,7 +22,7 @@ export default function ScrollCarousel({
           {images.map((image, index) => (
             <div
               key={index}
-              className={`lg:w-1/4 m-2 flex flex-col items-center lg:hover:cursor-pointer ${index === 4 ? "lg:mt-40" : index % 2 !== 0 ? "lg:mt-20" : {}
+              className={`lg:w-1/4 mx-16 flex flex-col justify-evenly items-center lg:hover:cursor-pointer ${index === 4 ? "lg:mt-40" : index % 2 !== 0 ? "lg:mt-20" : {}
                 }`}
             >
               <div className="font-bold text-black mb-4 text-4xl text-center">
