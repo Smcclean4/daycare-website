@@ -3,7 +3,7 @@
 import Image from "next/image";
 
 interface ScrollCarouselProps {
-  images: string[];
+  images: string | string[];
   titles?: string[];
   descriptions?: string[];
   size?: string;
@@ -19,7 +19,7 @@ export default function ScrollCarousel({
     <div className=" w-full">
       <div className="w-full h-full overflow-y-auto">
         <div className="flex flex-wrap justify-around">
-          {images.map((image, index) => (
+          {(Array.isArray(images) ? images : [images]).map((image, index) => (
             <div
               key={index}
               className={`lg:w-1/4 mx-16 flex flex-col justify-evenly items-center lg:hover:cursor-pointer ${index === 4 ? "lg:mt-40" : index % 2 !== 0 ? "lg:mt-20" : {}

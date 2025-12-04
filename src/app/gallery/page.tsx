@@ -15,7 +15,7 @@ export default function Gallery() {
   const [cardDeck, setCardDeck] = useState<Card[]>([]);
 
   const images = [
-    "family image 1.jpeg",
+    ["family image 1.jpeg", "IMG_1377.jpg", "IMG_1378.jpg", "IMG_1379.jpg", "IMG_6839.jpg"],
     "family_image_7.png",
     "IMG_6885.png",
     "IMG_6083.jpg"
@@ -124,8 +124,9 @@ export default function Gallery() {
           Each image captures a special moment in our daycare. From joyful playtimes to creative activities, our gallery showcases the vibrant and nurturing environment we provide for your children.
         </p>
         <div className="mb-12">
+          {/* create a map within a map of images? and make it clickable.. look into this? */}
           <ScrollCarousel
-            images={images}
+            images={images[0]}
             titles={titles}
             descriptions={descriptions}
             size={`50vw`}
@@ -133,7 +134,7 @@ export default function Gallery() {
         </div>
         <div className="mb-4 flex flex-col items-center">
           <div className="text-5xl flex justify-center items-center font-bold text-black"><p>Swipe through some thank you <span className="italic text-yellow-400 drop-shadow-4xl">Notes</span> from our parents & kids:</p></div>
-          <div ref={dragContainerRef} className="flex flex-col flex-wrap justify-center h-screen items-center w-3/4">
+          <div ref={dragContainerRef} className="flex flex-col flex-wrap justify-center h-screen min-h-[1050px] items-center w-3/4">
             {cardDeck.map((card, index) => (
               <motion.div
                 drag
@@ -152,7 +153,7 @@ export default function Gallery() {
                   alt={`${card.alt}`}
                   height={500}
                   width={500}
-                  className="object-cover h-auto w-auto"
+                  className="object-cover h-auto w-auto rounded-2xl"
                   style={{ touchAction: 'none' }}
                   placeholder="blur"
                   blurDataURL={`/${card.src}`}
