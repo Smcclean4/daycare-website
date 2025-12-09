@@ -13,19 +13,20 @@ interface Card {
 
 export default function Gallery() {
   const [cardDeck, setCardDeck] = useState<Card[]>([]);
+  const [galleryDeck, setGalleryDeck] = useState<string[]>([]);
 
   const images = [
-    ["family image 1.jpeg", "IMG_1377.jpg", "IMG_1378.jpg", "IMG_1379.jpg", "IMG_6839.jpg"],
+    ["IMG_1377.jpg", "IMG_1378.jpg", "IMG_1379.jpg", "IMG_6839.jpg"],
     "family_image_7.png",
     "IMG_6885.png",
     "IMG_6083.jpg"
   ];
 
   const titles = [
-    "Outdoor Play",
-    "Arts and Crafts",
-    "Holidays and Celebrations",
-    "Birthday Parties"
+    ["Outdoor Play"],
+    ["Arts and Crafts"],
+    ["Holidays and Celebrations"],
+    ["Birthday Parties"]
   ];
 
   const cards = [{
@@ -85,10 +86,10 @@ export default function Gallery() {
   }]
 
   const descriptions = [
-    "Our spacious outdoor play area is where imaginations run wild! Children develop physical skills, explore nature, and learn important social skills through cooperative play.",
-    "In our creative arts corner, children express themselves through painting, drawing, and crafts. Every masterpiece tells a unique story of their growing imagination.",
-    "We celebrate various holidays and special occasions throughout the year, creating joyful memories and teaching children about different cultures and traditions.",
-    "Birthday parties at our daycare are filled with fun, laughter, and excitement. We make each celebration special with themed decorations, games, and delicious treats."
+    ["Our spacious outdoor play area is where imaginations run wild! Children develop physical skills, explore nature, and learn important social skills through cooperative play."],
+    ["In our creative arts corner, children express themselves through painting, drawing, and crafts. Every masterpiece tells a unique story of their growing imagination."],
+    ["We celebrate various holidays and special occasions throughout the year, creating joyful memories and teaching children about different cultures and traditions."],
+    ["Birthday parties at our daycare are filled with fun, laughter, and excitement. We make each celebration special with themed decorations, games, and delicious treats."]
   ];
 
   const dragContainerRef = useRef<HTMLDivElement>(null);
@@ -102,8 +103,29 @@ export default function Gallery() {
     }
   }
 
+  const nextImage = () => {
+    const firstInLine = galleryDeck.shift();
+    if (firstInLine) {
+      setGalleryDeck([...galleryDeck, firstInLine]);
+    } else {
+      return;
+    }
+  }
+
+  const prevImage = () => {
+    const lastInLine = galleryDeck.pop();
+    if (lastInLine) {
+      setGalleryDeck([lastInLine, ...galleryDeck]);
+    } else {
+      return;
+    }
+  }
+
   useEffect(() => {
     setCardDeck(cards);
+    // need to not flatten it.. includes all images. Look into 
+    // getting each carousel to work separately based off of an condition (index)
+    setGalleryDeck(images.flat());
   }, []);
 
   return (
@@ -123,14 +145,22 @@ export default function Gallery() {
         <p className="text-2xl text-center my-12 text-black  max-w-2xl mx-auto">
           Each image captures a special moment in our daycare. From joyful playtimes to creative activities, our gallery showcases the vibrant and nurturing environment we provide for your children.
         </p>
-        <div className="mb-12">
-          {/* create a map within a map of images? and make it clickable.. look into this? */}
+        <div className="mb-12 flex flex-row items-center justify-center">
           <ScrollCarousel
-            images={images[0]}
-            titles={titles}
-            descriptions={descriptions}
+            images={galleryDeck[0]}
+            titles={titles[0]}
+            descriptions={descriptions[0]}
+            size={`50vw`}
+            shift={nextImage}
+            prev={prevImage}
+          />
+          <ScrollCarousel
+            images={images[1]}
+            titles={titles[1]}
+            descriptions={descriptions[1]}
             size={`50vw`}
           />
+
         </div>
         <div className="mb-4 flex flex-col items-center">
           <div className="text-5xl flex justify-center items-center font-bold text-black"><p>Swipe through some thank you <span className="italic text-yellow-400 drop-shadow-4xl">Notes</span> from our parents & kids:</p></div>
