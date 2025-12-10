@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 
 interface ScrollCarouselProps {
   images: string | string[];
@@ -24,7 +25,7 @@ export default function ScrollCarousel({
     <div className="w-full">
       <div className="flex flex-row items-center justify-center w-full relative h-screen">
         {/* in progress */}
-        <button onClick={() => prev && prev()} className="border-2 z-10 text-white border-red-600 bg-red-500 hover:bg-red-700 hover:cursor-pointer font-bold py-2 px-4 rounded-full">
+        <button onClick={() => prev && prev()} className="border-2 z-10 text-white border-red-600 bg-red-500 hover:bg-red-700 hover:cursor-pointer font-bold p-4 rounded-full">
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
@@ -49,14 +50,14 @@ export default function ScrollCarousel({
                   sizes={size}
                 />
               </div>
-              <div className="mt-4 z-10 text-black text-xl text-center">
+              <div className="mt-4 z-10 text-black text-xl text-center bg-gray-100/70 rounded-md p-2">
                 <p>{descriptions[index]}</p>
               </div>
             </div>
           ))}
         </div>
         {/* in progress */}
-        <button onClick={() => shift && shift()} className="border-blue-600 bg-blue-500 border-2 z-10 text-white hover:bg-blue-700 hover:cursor-pointer font-bold py-2 px-4 rounded-full">
+        <button onClick={() => shift && shift()} className="border-blue-600 bg-blue-500 border-2 z-10 text-white hover:bg-blue-700 hover:cursor-pointer font-bold p-4 rounded-full">
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>

@@ -13,11 +13,12 @@ interface Card {
 
 export default function Gallery() {
   const [cardDeck, setCardDeck] = useState<Card[]>([]);
-  const [galleryDeck, setGalleryDeck] = useState<string[]>([]);
+  const [outdoorDeck, setOutdoorDeck] = useState<string[]>([]);
+  const [artsAndCraftsDeck, setArtsAndCraftsDeck] = useState<string[]>([]);
 
   const images = [
-    ["IMG_1377.jpg", "IMG_1378.jpg", "IMG_1379.jpg", "IMG_6839.jpg"],
-    "family_image_7.png",
+    ["IMG_1377.jpg", "IMG_1378.jpg", "IMG_1379.jpg", "IMG_6839.jpg", "family_image_7.png"],
+    ["IMG_6904.jpeg", "IMG_6838.jpg", "IMG_6889.png", "IMG_6879.PNG", "IMG_6878.PNG", "IMG_6876.PNG", "IMG_6877.PNG", "IMG_6881.PNG", "IMG_6865.jpg"],
     "IMG_6885.png",
     "IMG_6083.jpg"
   ];
@@ -103,19 +104,19 @@ export default function Gallery() {
     }
   }
 
-  const nextImage = () => {
-    const firstInLine = galleryDeck.shift();
+  const nextImage = (deck: string[], setDeck: React.Dispatch<React.SetStateAction<string[]>>) => {
+    const firstInLine = deck.shift();
     if (firstInLine) {
-      setGalleryDeck([...galleryDeck, firstInLine]);
+      setDeck([...deck, firstInLine]);
     } else {
       return;
     }
   }
 
-  const prevImage = () => {
-    const lastInLine = galleryDeck.pop();
+  const prevImage = (deck: string[], setDeck: React.Dispatch<React.SetStateAction<string[]>>) => {
+    const lastInLine = deck.pop();
     if (lastInLine) {
-      setGalleryDeck([lastInLine, ...galleryDeck]);
+      setDeck([lastInLine, ...deck])
     } else {
       return;
     }
@@ -123,9 +124,8 @@ export default function Gallery() {
 
   useEffect(() => {
     setCardDeck(cards);
-    // need to not flatten it.. includes all images. Look into 
-    // getting each carousel to work separately based off of an condition (index)
-    setGalleryDeck(images.flat());
+    setOutdoorDeck(images[0] as string[]);
+    setArtsAndCraftsDeck(images[1] as string[]);
   }, []);
 
   return (
@@ -145,26 +145,28 @@ export default function Gallery() {
         <p className="text-2xl text-center my-12 text-black  max-w-2xl mx-auto">
           Each image captures a special moment in our daycare. From joyful playtimes to creative activities, our gallery showcases the vibrant and nurturing environment we provide for your children.
         </p>
-        <div className="mb-12 flex flex-row items-center justify-center">
+        <div className="flex flex-row items-center justify-center">
           <ScrollCarousel
-            images={galleryDeck[0]}
+            images={outdoorDeck[0]}
             titles={titles[0]}
             descriptions={descriptions[0]}
             size={`50vw`}
-            shift={nextImage}
-            prev={prevImage}
+            shift={() => nextImage(outdoorDeck, setOutdoorDeck)}
+            prev={() => prevImage(outdoorDeck, setOutdoorDeck)}
           />
           <ScrollCarousel
-            images={images[1]}
+            images={artsAndCraftsDeck[0]}
             titles={titles[1]}
             descriptions={descriptions[1]}
             size={`50vw`}
+            shift={() => nextImage(artsAndCraftsDeck, setArtsAndCraftsDeck)}
+            prev={() => prevImage(artsAndCraftsDeck, setArtsAndCraftsDeck)}
           />
 
         </div>
-        <div className="mb-4 flex flex-col items-center">
+        <div className="mb-4 h-screen">
           <div className="text-5xl flex justify-center items-center font-bold text-black"><p>Swipe through some thank you <span className="italic text-yellow-400 drop-shadow-4xl">Notes</span> from our parents & kids:</p></div>
-          <div ref={dragContainerRef} className="flex flex-col flex-wrap justify-center h-screen min-h-[1050px] items-center w-3/4">
+          <div ref={dragContainerRef} className="flex items-center justify-center relative flex-col flex-wrap h-1/2 w-1/2">
             {cardDeck.map((card, index) => (
               <motion.div
                 drag
@@ -173,7 +175,7 @@ export default function Gallery() {
                 initial={{ boxShadow: '0px 0px 0px rgba(0, 0, 0, 0)', rotate: (Math.round(Math.random()) * 20) - 10 }}
                 onDragEnd={() => { endOfLine() }}
                 style={{ zIndex: cardDeck.length - index }}
-                className={`hover:cursor-grab active:cursor-grabbing flex flex-col items-center justify-center list-none absolute`}
+                className={`hover:cursor-grab active:cursor-grabbing h-full w-full flex flex-col items-center justify-center list-none absolute`}
                 dragConstraints={dragContainerRef}
                 dragElastic={0.2}
                 dragSnapToOrigin={true}
@@ -181,8 +183,7 @@ export default function Gallery() {
                 <Image
                   src={`/${card.src}`}
                   alt={`${card.alt}`}
-                  height={500}
-                  width={500}
+                  fill
                   className="object-cover h-auto w-auto rounded-2xl"
                   style={{ touchAction: 'none' }}
                   placeholder="blur"
