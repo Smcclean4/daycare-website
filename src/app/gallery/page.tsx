@@ -15,12 +15,14 @@ export default function Gallery() {
   const [cardDeck, setCardDeck] = useState<Card[]>([]);
   const [outdoorDeck, setOutdoorDeck] = useState<string[]>([]);
   const [artsAndCraftsDeck, setArtsAndCraftsDeck] = useState<string[]>([]);
+  const [holidaysAndCelebrationsDeck, setHolidaysAndCelebrationsDeck] = useState<string[]>([]);
+  const [birthdayPartiesDeck, setBirthdayPartiesDeck] = useState<string[]>([]);
 
   const images = [
     ["IMG_1377.jpg", "IMG_1378.jpg", "IMG_1379.jpg", "IMG_6839.jpg", "family_image_7.png"],
     ["IMG_6904.jpeg", "IMG_6838.jpg", "IMG_6889.png", "IMG_6879.PNG", "IMG_6878.PNG", "IMG_6876.PNG", "IMG_6877.PNG", "IMG_6881.PNG", "IMG_6865.jpg"],
-    "IMG_6885.png",
-    "IMG_6083.jpg"
+    ["IMG_6884.PNG", "IMG_6885.PNG", "IMG_6886.PNG", "IMG_6887.PNG", "IMG_6888.PNG", "IMG_6893.PNG", "IMG_6880.JPG", "IMG_8257.JPG", "IMG_4244.jpeg", "IMG_1034.jpeg", "IMG_2164.jpeg", "IMG_4535.png", "IMG_4544.png", "IMG_4549.png", "IMG_4562.png", "IMG_5325.png", "IMG_5412.png", "IMG_5493.png", "IMG_5503.png", "IMG_5528.png"],
+    ["IMG_6083.jpg", "IMG_0789.jpeg", "IMG_4915.png"]
   ];
 
   const titles = [
@@ -124,8 +126,10 @@ export default function Gallery() {
 
   useEffect(() => {
     setCardDeck(cards);
-    setOutdoorDeck(images[0] as string[]);
-    setArtsAndCraftsDeck(images[1] as string[]);
+    setOutdoorDeck(images[0]);
+    setArtsAndCraftsDeck(images[1]);
+    setHolidaysAndCelebrationsDeck(images[2]);
+    setBirthdayPartiesDeck(images[3]);
   }, []);
 
   return (
@@ -145,7 +149,7 @@ export default function Gallery() {
         <p className="text-2xl text-center my-12 text-black  max-w-2xl mx-auto">
           Each image captures a special moment in our daycare. From joyful playtimes to creative activities, our gallery showcases the vibrant and nurturing environment we provide for your children.
         </p>
-        <div className="flex flex-row items-center justify-center">
+        <div className="flex flex-row items-center justify-center flex-wrap">
           <ScrollCarousel
             images={outdoorDeck[0]}
             titles={titles[0]}
@@ -162,11 +166,26 @@ export default function Gallery() {
             shift={() => nextImage(artsAndCraftsDeck, setArtsAndCraftsDeck)}
             prev={() => prevImage(artsAndCraftsDeck, setArtsAndCraftsDeck)}
           />
-
+          <ScrollCarousel
+            images={holidaysAndCelebrationsDeck[0]}
+            titles={titles[2]}
+            descriptions={descriptions[2]}
+            size={`50vw`}
+            shift={() => nextImage(holidaysAndCelebrationsDeck, setHolidaysAndCelebrationsDeck)}
+            prev={() => prevImage(holidaysAndCelebrationsDeck, setHolidaysAndCelebrationsDeck)}
+          />
+          <ScrollCarousel
+            images={birthdayPartiesDeck[0]}
+            titles={titles[3]}
+            descriptions={descriptions[3]}
+            size={`50vw`}
+            shift={() => nextImage(birthdayPartiesDeck, setBirthdayPartiesDeck)}
+            prev={() => prevImage(birthdayPartiesDeck, setBirthdayPartiesDeck)}
+          />
         </div>
-        <div className="mb-4 h-screen">
+        <div className=" flex flex-col items-center justify-around mb-4 h-screen">
           <div className="text-5xl flex justify-center items-center font-bold text-black"><p>Swipe through some thank you <span className="italic text-yellow-400 drop-shadow-4xl">Notes</span> from our parents & kids:</p></div>
-          <div ref={dragContainerRef} className="flex items-center justify-center relative flex-col flex-wrap h-1/2 w-1/2">
+          <div ref={dragContainerRef} className="relative flex-col flex items-center justify-center flex-wrap h-3/4 w-3/4">
             {cardDeck.map((card, index) => (
               <motion.div
                 drag
@@ -175,7 +194,7 @@ export default function Gallery() {
                 initial={{ boxShadow: '0px 0px 0px rgba(0, 0, 0, 0)', rotate: (Math.round(Math.random()) * 20) - 10 }}
                 onDragEnd={() => { endOfLine() }}
                 style={{ zIndex: cardDeck.length - index }}
-                className={`hover:cursor-grab active:cursor-grabbing h-full w-full flex flex-col items-center justify-center list-none absolute`}
+                className={`hover:cursor-grab active:cursor-grabbing w-auto h-auto flex flex-col items-center justify-center list-none absolute`}
                 dragConstraints={dragContainerRef}
                 dragElastic={0.2}
                 dragSnapToOrigin={true}
@@ -183,8 +202,9 @@ export default function Gallery() {
                 <Image
                   src={`/${card.src}`}
                   alt={`${card.alt}`}
-                  fill
-                  className="object-cover h-auto w-auto rounded-2xl"
+                  width={500}
+                  height={500}
+                  className="rounded-2xl"
                   style={{ touchAction: 'none' }}
                   placeholder="blur"
                   blurDataURL={`/${card.src}`}

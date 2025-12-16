@@ -22,7 +22,7 @@ export default function ScrollCarousel({
 }: ScrollCarouselProps) {
 
   return (
-    <div className="w-full">
+    <div className="w-1/2">
       <div className="flex flex-row items-center justify-center w-full relative h-screen">
         {/* in progress */}
         <button onClick={() => prev && prev()} className="border-2 z-10 text-white border-red-600 bg-red-500 hover:bg-red-700 hover:cursor-pointer font-bold p-4 rounded-full">
@@ -30,7 +30,7 @@ export default function ScrollCarousel({
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
-        <div className="flex w-2/4 items-center flex-wrap h-full justify-center">
+        <div className="flex w-[450px] items-center flex-wrap h-full justify-center">
           {(Array.isArray(images) ? images : [images]).map((image, index) => (
             <div
               key={index}
