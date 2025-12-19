@@ -21,7 +21,7 @@ export default function Gallery() {
   const images = [
     ["IMG_1377.jpg", "IMG_1378.jpg", "IMG_1379.jpg", "IMG_6839.jpg", "family_image_7.png"],
     ["IMG_6904.jpeg", "IMG_6838.jpg", "IMG_6889.png", "IMG_6879.PNG", "IMG_6878.PNG", "IMG_6876.PNG", "IMG_6877.PNG", "IMG_6881.PNG", "IMG_6865.jpg"],
-    ["IMG_6884.PNG", "IMG_6885.PNG", "IMG_6886.PNG", "IMG_6887.PNG", "IMG_6888.PNG", "IMG_6893.PNG", "IMG_6880.JPG", "IMG_8257.JPG", "IMG_4244.jpeg", "IMG_1034.jpeg", "IMG_2164.jpeg", "IMG_4535.png", "IMG_4544.jpg", "IMG_4549.jpg", "IMG_4562.jpg", "IMG_5325.jpg", "IMG_5412.jpg", "IMG_5493.jpeg", "IMG_5503.jpeg", "IMG_5528.jpeg"],
+    ["IMG_6884.PNG", "IMG_6885.PNG", "IMG_6886.PNG", "IMG_6887.PNG", "IMG_6888.PNG", "IMG_6893.PNG", "IMG_6880.JPG", "IMG_8257.JPG", "IMG_4244.jpeg", "IMG_1034.jpeg", "IMG_2164.jpeg", "IMG_4535.png", "IMG_4544.jpg", "IMG_4549.jpg", "IMG_5325.jpg", "IMG_4562.jpeg", "IMG_5493.jpg", "IMG_5503.jpg", "IMG_5528.jpg", "IMG_5412.jpg"],
     ["IMG_6083.jpg", "IMG_0789.jpeg", "IMG_4915.png"]
   ];
 
@@ -126,10 +126,10 @@ export default function Gallery() {
 
   useEffect(() => {
     setCardDeck(cards);
-    setOutdoorDeck(images[0]);
-    setArtsAndCraftsDeck(images[1]);
-    setHolidaysAndCelebrationsDeck(images[2]);
-    setBirthdayPartiesDeck(images[3]);
+    setOutdoorDeck(images[0] as string[]);
+    setArtsAndCraftsDeck(images[1] as string[]);
+    setHolidaysAndCelebrationsDeck(images[2] as string[]);
+    setBirthdayPartiesDeck(images[3] as string[]);
   }, []);
 
   return (
@@ -145,11 +145,13 @@ export default function Gallery() {
           height: '100%'
         }}
       />
-      <div className="w-7/8 relative">
-        <p className="text-2xl text-center my-12 text-black  max-w-2xl mx-auto">
-          Each image captures a special moment in our daycare. From joyful playtimes to creative activities, our gallery showcases the vibrant and nurturing environment we provide for your children.
-        </p>
-        <div className="flex flex-row items-center justify-center flex-wrap">
+      <div className=" flex flex-col items-center justify-center w-7/8 relative">
+        <div className="flex flex-col items-center justify-center text-2xl text-center mt-12 text-black min-h-[300px] max-h-[350px] max-w-3xl mx-auto">
+          <p>
+            Each image captures a special moment in our daycare. From joyful playtimes to creative activities, our gallery showcases the vibrant and nurturing environment we provide for your children.
+          </p>
+        </div>
+        <div className="flex flex-row justify-around min-h-[1500px] flex-wrap">
           <ScrollCarousel
             images={outdoorDeck[0]}
             titles={titles[0]}
@@ -183,7 +185,7 @@ export default function Gallery() {
             prev={() => prevImage(birthdayPartiesDeck, setBirthdayPartiesDeck)}
           />
         </div>
-        <div className=" flex flex-col items-center justify-around mb-4 h-screen">
+        <div className=" flex flex-col text-center items-center justify-around mb-4 h-screen min-h-[1000px]">
           <div className="text-5xl flex justify-center items-center font-bold text-black"><p>Swipe through some thank you <span className="italic text-yellow-400 drop-shadow-4xl">Notes</span> from our parents & kids:</p></div>
           <div ref={dragContainerRef} className="relative flex-col flex items-center justify-center flex-wrap h-3/4 w-3/4">
             {cardDeck.map((card, index) => (

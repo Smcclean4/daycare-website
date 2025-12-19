@@ -8,7 +8,7 @@ export default function Header() {
   const [hiddenTabIndicator, setHiddenTabIndicator] = useState(true);
 
   const setActiveTabColor = (index: number) => {
-    return activeTabIndex === index ? "text-purple-500" : activeTabIndex === 3 ? "text-black lg:text-white" : "text-black";
+    return activeTabIndex === index ? "text-purple-500" : activeTabIndex === 3 ? "text-black lg:text-white" : activeTabIndex === 0 ? "text-white" : "text-black";
   };
 
   const headerElements = ["Home", "Gallery", "About", "Contact"];
@@ -26,7 +26,7 @@ export default function Header() {
   }, [activeTabIndex]);
 
   return (
-    <div className="flex justify-between z-10 max-h-50 w-full absolute">
+    <div className="flex justify-between z-50 max-h-50 w-full absolute">
       <Link href="/home">
         <div className="h-35 md:h-40 lg:h-45 xl:h-55 2xl:h-60 w-35 md:w-40 lg:w-45 xl:w-55 2xl:w-60 relative" onClick={() => setActiveTabIndex(0)}>
           <Image

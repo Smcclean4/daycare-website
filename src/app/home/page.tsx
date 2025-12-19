@@ -30,7 +30,7 @@ export default function Home() {
           <h3 className="text-sm lg:text-xl xl:text-xl 2xl:text-2xl font-mono">Welcome to <span className="text-purple-500 underline drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">Fernando</span> <span className="text-purple-500 underline drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">Family</span> <span className="text-purple-500 underline drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">Daycare</span>! Here, we offer more than just babysitting—we provide a loving, supportive family environment where your child’s emotional and developmental needs are met. With activities like music, outdoor play, arts and crafts, and more, your child will receive the care and attention they deserve. You can have peace of mind knowing they’re in a safe, nurturing home, treated with respect and love. Thank you for visiting, and I look forward to making your child’s early years filled with joy and growth.</h3>
         </div>
       </div>
-      <Image src={`${homeScrollImage[homeImageIndex]}`} className="object-contain" layout="fill" alt="Fernando Family Daycare" />
+      <Image src={`${homeScrollImage[homeImageIndex]}`} className="object-cover object-[25%_35%]" layout="fill" alt="Fernando Family Daycare" />
     </div>
   );
 }

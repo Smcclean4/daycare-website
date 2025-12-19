@@ -88,7 +88,7 @@ export default function AboutUs() {
   }, [tabIndex])
 
   return (
-    <div className="h-auto min-h-275 lg:h-screen w-full flex justify-between flex-row lg:flex-col flex-wrap items-center bg-gradient-to-b from-purple-100/75 to-purple-300/75 pb-12 relative pt-20">
+    <div className="h-auto min-h-275 lg:h-screen w-full flex justify-center flex-wrap items-center bg-gradient-to-b from-purple-100/75 to-purple-300/75 pb-12 relative pt-20">
       <div className="w-full lg:w-2/4 text-center m-10 lg:m-0">
         <p className="text-2xl px-4 mt-16 text-black">
           Welcome to our nurturing daycare center, where we create a warm and stimulating environment for your child&apos;s growth.
@@ -96,8 +96,8 @@ export default function AboutUs() {
           in a safe and loving atmosphere.
         </p>
       </div>
-      <div className="flex flex-col lg:flex-row justify-around items-center h-4/5 w-full xl:w-4/5">
-        <div className="flex flex-row lg:flex-col text-center justify-between items-center relative h-auto w-3/4  lg:w-1/2 bg-purple-300 border-t-1 border-r-1 border-white rounded-xl shadow-lg">
+      <div className="flex flex-col lg:flex-row justify-around items-center h-4/5 w-4/5">
+        <div className="flex flex-col text-center justify-around items-center relative h-auto w-3/4 lg:w-1/2 bg-purple-300 border-t-1 border-r-1 border-white rounded-xl shadow-lg mb-12">
           <p className="md:m-0 text-2xl md:text-3xl lg:text-4xl text-purple-800 p-6" style={{ fontFamily: "Edu NSW ACT Cursive" }}>Hi, my name is Shiromi!</p>
           <Image
             src="/IMG_9968.jpeg"
