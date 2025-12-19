@@ -18,6 +18,8 @@ export default function Header() {
     const storedIndex = localStorage.getItem("activeTabIndex");
     if (storedIndex !== null && parseInt(storedIndex, 10) !== activeTabIndex) {
       setActiveTabIndex(parseInt(storedIndex, 10));
+    } else {
+      setActiveTabIndex(0);
     }
   }, []);
 
