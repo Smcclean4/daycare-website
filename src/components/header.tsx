@@ -8,7 +8,7 @@ export default function Header() {
   const [hiddenTabIndicator, setHiddenTabIndicator] = useState(true);
 
   const setActiveTabColor = (index: number) => {
-    return activeTabIndex === index ? "text-purple-500" : activeTabIndex === 3 ? "text-black lg:text-white" : activeTabIndex === 0 ? "text-white" : "text-black";
+    return activeTabIndex === index ? "text-purple-500" : activeTabIndex === 3 ? "text-black lg:text-white" : activeTabIndex === 0 ? "text-black lg:text-white" : "text-black";
   };
 
   const headerElements = ["Home", "Gallery", "About", "Contact"];
