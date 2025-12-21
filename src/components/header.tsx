@@ -16,7 +16,7 @@ export default function Header() {
 
   useEffect(() => {
     const storedIndex = localStorage.getItem("activeTabIndex");
-    if (storedIndex !== null && parseInt(storedIndex, 10) !== activeTabIndex) {
+    if (storedIndex !== null) {
       setActiveTabIndex(parseInt(storedIndex, 10));
     } else {
       setActiveTabIndex(0);
