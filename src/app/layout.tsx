@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   publisher: 'Fernando Family Daycare',
   applicationName: 'Fernando Family Daycare',
   referrer: 'origin-when-cross-origin',
-  themeColor: '#ffffff',
+  themeColor: '#FFFF00',
   viewport: 'cover-fit=cover',
   colorScheme: 'light'
 };
