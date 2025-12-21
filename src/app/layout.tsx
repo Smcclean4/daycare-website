@@ -2,7 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "../components/header";
 import Footer from "../components/footer";
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,10 +23,13 @@ export const metadata: Metadata = {
   publisher: 'Fernando Family Daycare',
   applicationName: 'Fernando Family Daycare',
   referrer: 'origin-when-cross-origin',
-  themeColor: '#FFFF00',
-  viewport: 'cover-fit=cover',
-  colorScheme: 'light'
 };
+
+export const viewport: Viewport = {
+  themeColor: '#FFFF00',
+  viewportFit: 'cover',
+  colorScheme: 'light'
+}
 
 export default function RootLayout({
   children,
