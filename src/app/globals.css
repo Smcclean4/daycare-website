@@ -1,7 +1,2 @@
 @import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&display=swap');
 @import "tailwindcss";
-
-body {
-  background-color: #FFFF00;
-  /* Must match the meta tag color */
-}
