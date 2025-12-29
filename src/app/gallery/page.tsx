@@ -21,7 +21,7 @@ export default function Gallery() {
   const images = [
     ["IMG_1377.jpg", "IMG_1378.jpg", "IMG_1379.jpg", "IMG_6839.jpg", "family_image_7.png"],
     ["IMG_6904.jpeg", "IMG_6838.jpg", "IMG_6889.png", "IMG_6879.PNG", "IMG_6878.PNG", "IMG_6876.PNG", "IMG_6877.PNG", "IMG_6881.PNG", "IMG_6865.jpg"],
-    ["IMG_6884.PNG", "IMG_6885.PNG", "IMG_6886.PNG", "IMG_6887.PNG", "IMG_6888.PNG", "IMG_6893.PNG", "IMG_6880.JPG", "IMG_8257.JPG", "IMG_4244.jpeg", "IMG_1034.jpeg", "IMG_2164.jpeg", "IMG_4535.png", "IMG_4544.jpg", "IMG_4549.jpg", "IMG_5325.jpg", "IMG_4562.jpeg", "IMG_5493.jpg", "IMG_5503.jpg", "IMG_5528.jpg", "IMG_5412.jpg"],
+    ["IMG_6884.PNG", "IMG_6885.PNG", "IMG_6886.PNG", "IMG_6887.PNG", "IMG_6888.PNG", "IMG_6893.PNG", "IMG_6880.JPG", "IMG_8257.JPG", "IMG_4244.jpeg", "IMG_1034.jpeg", "IMG_2164.jpeg", "IMG_4535.png", "IMG_4544.jpg", "IMG_4549.jpg", "IMG_4562.jpeg", "IMG_5493.jpg", "IMG_5503.jpg", "IMG_5528.jpg", "IMG_5412.jpg"],
     ["IMG_6083.jpg", "IMG_0789.jpeg", "IMG_4915.png"]
   ];
 
@@ -151,7 +151,7 @@ export default function Gallery() {
             Each image captures a special moment in our daycare. From joyful playtimes to creative activities, our gallery showcases the vibrant and nurturing environment we provide for your children.
           </p>
         </div>
-        <div className="flex flex-row justify-around min-h-[1500px] flex-wrap">
+        <div className="flex flex-row h-auto justify-around min-h-[1500px] flex-wrap">
           <ScrollCarousel
             images={outdoorDeck[0]}
             titles={titles[0]}
