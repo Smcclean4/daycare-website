@@ -31,7 +31,7 @@ export default function ScrollCarousel({
             <div className="font-bold z-10 text-black text-4xl text-center">
               <p>{titles[index]}</p>
             </div>
-            <div className="flex relative items-center h-[400px] w-[400px] rounded-lg shadow-lg my-4">
+            <div className="flex relative items-center h-[450px] w-[450px] rounded-lg shadow-lg my-4">
               <Image
                 src={`/${image}`}
                 alt={`${titles[index]}`}
