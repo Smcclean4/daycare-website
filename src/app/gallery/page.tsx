@@ -185,7 +185,7 @@ export default function Gallery() {
             prev={() => prevImage(birthdayPartiesDeck, setBirthdayPartiesDeck)}
           />
         </div>
-        <div className=" flex flex-col text-center items-center justify-around mb-4 h-screen border-2 min-h-[1000px]">
+        <div className=" flex flex-col text-center items-center justify-around mb-4 h-screen min-h-[1000px]">
           <div className="text-5xl flex justify-center items-center font-bold text-black"><p>Swipe through some thank you <span className="italic text-yellow-400 drop-shadow-4xl">Notes</span> from our parents & kids:</p></div>
           <div ref={dragContainerRef} className="relative flex-col flex items-center justify-center flex-wrap h-3/4 w-3/4">
             {cardDeck.map((card, index) => (
