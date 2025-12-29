@@ -21,12 +21,12 @@ export default function ScrollCarousel({
 }: ScrollCarouselProps) {
 
   return (
-    <div className="flex flex-row items-center justify-center relative h-screen">
-      <div className="flex w-[550px] items-center flex-wrap h-full justify-center">
+    <div className="flex flex-row items-center justify-center relative m-0 h-screen border-2">
+      <div className="flex w-[500px] items-center flex-wrap h-full justify-center">
         {(Array.isArray(images) ? images : [images]).map((image, index) => (
           <div
             key={index}
-            className='flex w-3/4 flex-col items-center absolute'
+            className='flex h-full w-3/4 flex-col items-center absolute'
           >
             <div className="font-bold z-10 text-black text-4xl text-center">
               <p>{titles[index]}</p>

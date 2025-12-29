@@ -19,7 +19,7 @@ export default function Gallery() {
   const [birthdayPartiesDeck, setBirthdayPartiesDeck] = useState<string[]>([]);
 
   const images = [
-    ["IMG_1377.jpg", "IMG_1378.jpg", "IMG_1379.jpg", "IMG_6839.jpg", "family_image_7.png"],
+    ["IMG_1377.jpg", "IMG_1378.jpg", "IMG_1379.jpg", "IMG_6839.jpg"],
     ["IMG_6904.jpeg", "IMG_6838.jpg", "IMG_6889.png", "IMG_6879.PNG", "IMG_6878.PNG", "IMG_6876.PNG", "IMG_6877.PNG", "IMG_6881.PNG", "IMG_6865.jpg"],
     ["IMG_6884.PNG", "IMG_6885.PNG", "IMG_6886.PNG", "IMG_6887.PNG", "IMG_6888.PNG", "IMG_6893.PNG", "IMG_6880.JPG", "IMG_8257.JPG", "IMG_4244.jpeg", "IMG_1034.jpeg", "IMG_2164.jpeg", "IMG_4535.png", "IMG_4544.jpg", "IMG_4549.jpg", "IMG_4562.jpeg", "IMG_5493.jpg", "IMG_5503.jpg", "IMG_5528.jpg", "IMG_5412.jpg"],
     ["IMG_6083.jpg", "IMG_0789.jpeg", "IMG_4915.png"]
@@ -185,7 +185,7 @@ export default function Gallery() {
             prev={() => prevImage(birthdayPartiesDeck, setBirthdayPartiesDeck)}
           />
         </div>
-        <div className=" flex flex-col text-center items-center justify-around mb-4 h-screen min-h-[1000px]">
+        <div className=" flex flex-col text-center items-center justify-around mb-4 h-screen border-2 min-h-[1000px]">
           <div className="text-5xl flex justify-center items-center font-bold text-black"><p>Swipe through some thank you <span className="italic text-yellow-400 drop-shadow-4xl">Notes</span> from our parents & kids:</p></div>
           <div ref={dragContainerRef} className="relative flex-col flex items-center justify-center flex-wrap h-3/4 w-3/4">
             {cardDeck.map((card, index) => (
