@@ -204,7 +204,7 @@ export default function Gallery() {
             {cardDeck.map((card, index) => (
               <motion.div
                 drag
-                whileDrag={{ scale: 1.5, rotate: (Math.random() * 20) - 10, outline: 'none' }}
+                whileDrag={{ scale: 1.3, rotate: (Math.random() * 20) - 10, outline: 'none' }}
                 key={index}
                 initial={{ boxShadow: '0px 0px 0px rgba(0, 0, 0, 0.5)', rotate: (Math.round(Math.random()) * 20) - 10 }}
                 onDragEnd={() => { endOfLine() }}
