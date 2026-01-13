@@ -10,8 +10,8 @@ export default function Contact() {
                 <div className="min-h-2/4 w-6/7 md:w-3/4">
                     <ul className="text-left w-full h-auto flex flex-col justify-center">
                         <li className="p-1 list-disc"><span className="underline text-bold underline-offset-2">Email:</span> lsferndo@sbcglobal.net</li>
-                        <li className="p-1 list-disc"><span className="underline text-bold underline-offset-2">Phone Number:</span> (310) 293-3883 / (310) 532-7529  </li>
-                        <li className="p-1 pt-4">I am a trained and qualified daycare owner/childcare provider and will treat your children with love and respect.</li>
+                        <li className="p-1 list-disc"><span className="underline text-bold underline-offset-2">Phone Number:</span> (310) 293-3883 </li>
+                        <li className="p-1 pt-4">I am a trained and qualified daycare owner/childcare provider and will care for your child with love and respect.</li>
                         <li className="p-1">- Shiromi Fernando</li>
                         <li className="p-4">Call For a Tour and Rates!</li>
                     </ul>

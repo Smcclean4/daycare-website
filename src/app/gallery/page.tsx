@@ -20,11 +20,11 @@ export default function Gallery() {
   const [learningTimeDeck, setLearningTimeDeck] = useState<string[]>([]);
 
   const images = [
-    ["IMG_1377.jpg", "IMG_1379.jpg", "IMG_6839.jpg"],
-    ["IMG_6880.JPG", "IMG_6893.png", "IMG_6888.png","IMG_6884.PNG", "IMG_6885.PNG", "IMG_6886.PNG", "IMG_6904.jpeg", "IMG_6838.jpg", "IMG_6889.png", "IMG_6879.PNG", "IMG_6878.PNG", "IMG_6876.PNG", "IMG_6877.PNG", "IMG_6881.PNG", "IMG_6865.jpg"],
-    ["IMG_6887.png", "IMG_8257.jpg", "IMG_4244.JPEG", "IMG_1034.jpeg", "IMG_2164.jpeg", "IMG_4535.png", "IMG_4544.jpg", "IMG_4549.jpg", "IMG_4562.jpeg", "IMG_5493.jpg", "IMG_5503.jpg", "IMG_5528.jpg", "IMG_5412.jpg"],
-    ["IMG_6083.jpg", "IMG_0789.jpeg", "IMG_4915.png"],
-    ["IMG_1378.jpg"]
+    ["IMG_1377.jpg", "IMG_1379.jpg","IMG_3788.jpg", "IMG_6839.jpg", "IMG_3920.jpg", "IMG_4036.jpg", "IMG_4391.jpg", "IMG_6950.jpg", "IMG_0219.jpg", "IMG_3505.jpg", "IMG_6929.jpg", "IMG_4055.jpg", "IMG_8440.jpg", "IMG_7013.jpg"],
+    ["IMG_6880.JPG", "IMG_6893.png", "IMG_6888.png","IMG_6884.PNG", "IMG_6885.PNG", "IMG_6886.PNG", "IMG_6904.jpeg", "IMG_6838.jpg", "IMG_6889.png", "IMG_6879.PNG", "IMG_6878.PNG", "IMG_6876.PNG", "IMG_6877.PNG", "IMG_6881.PNG", "IMG_6865.jpg", "IMG_9894_Facetune_17-07-2022-17-10-36.jpg", "IMG_1333.jpg", "IMG_1347.jpg", "IMG_6887.png"],
+    ["IMG_8257.jpg", "IMG_4244.JPEG", "IMG_1034.jpeg", "IMG_2164.jpeg", "IMG_4535.png", "IMG_4544.jpg", "IMG_4549.jpg", "IMG_4562.jpeg", "IMG_5493.jpg", "IMG_5503.jpg", "IMG_5528.jpg", "IMG_5412.jpg", "IMG_5986.jpg", "IMG_1544.jpg", "IMG_0987.jpg", "IMG_0998.jpg", "IMG_1014.jpg", "IMG_1333.jpg", "IMG_1347.jpg", "IMG_1353.jpeg", "IMG_1369.jpeg", "IMG_1532.jpeg", "IMG_1540.jpeg", "IMG_3986.jpeg", "IMG_3989.jpeg", "IMG_7571.jpeg", "IMG_7660.jpeg", "IMG_7668.jpeg", "IMG_7684.jpeg", "IMG_7685.jpeg", "IMG_7689 2.jpeg", "IMG_7677.jpeg", "IMG_7710.jpeg", "IMG_8353.jpeg", "IMG_8997.jpeg", "IMG_5326.jpg"],
+    ["IMG_6083.jpg", "IMG_0789.jpeg", "IMG_4915.png", "IMG_9356.jpg", "IMG_1821.jpg", "IMG_5664.jpg", "IMG_5717.jpeg", "IMG_5733.jpeg", "IMG_4937.jpeg", "IMG_4904.jpeg", "IMG_4923.jpeg", "IMG_4899.jpeg", "IMG_3898.jpeg", "IMG_3912.jpeg", "IMG_3907.jpeg", "IMG_2771.jpg", "IMG_0775.jpeg", "IMG_0813.jpeg", "IMG_0810.jpeg", "IMG_6132.JPG", "IMG_4948.jpg", "IMG_4946.PNG"],
+    ["IMG_1378.jpg", "IMG_8273.jpg", "IMG_6852.jpg"]
   ];
 
   const titles = [
